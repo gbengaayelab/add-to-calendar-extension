@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  header {
+    background-color: #0078D4;
+    color: #fff;
+    padding: 1.5em 1em;
+    text-align: center;
+  }
+  
+  header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  header .logo img {
+    border-radius: 50%;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 0 1em;
+  }
+  
+  .intro,
+  .steps,
+  .support {
+    margin-bottom: 2em;
+  }
+  
+  .intro h2 {
+    font-size: 1.8em;
+  }
+  
+  .steps .step {
+    margin-bottom: 1.5em;
+  }
+  
+  .steps .step h3 {
+    font-size: 1.4em;
+    color: #0078D4;
+  }
+  
+  .support a {
+    color: #0078D4;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  support a:hover {
+    text-decoration: underline;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.9em;
+  }
+  
+  .how-to-video-container {
+    max-width: 800px; /* Restrict container width */
+    margin: 40px auto; /* Center the container */
+    text-align: center;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure no content overflows */
+  }
+  
+  .how-to-video-container h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .how-to-video-container p {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .how-to-video {
+    max-width: 100%; /* Fit video to container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add responsiveness for smaller screens */
+  @media (max-width: 600px) {
+    .how-to-video-container {
+      padding: 15px;
+    }
+  
+    .how-to-video-container h2 {
+      font-size: 20px;
+    }
+  
+    .how-to-video-container p {
+      font-size: 14px;
+    }
+  }
+  

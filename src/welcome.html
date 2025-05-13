@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Add to Calendar</title>
+  
+  <!-- Google Fonts for Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables for Consistent Styling */
+    :root {
+      --primary-color: #4A90E2;
+      --accent-color: #FF6B6B;
+      --background-color: #F5F7FA;
+      --header-bg: #FFFFFF;
+      --header-text: #333333;
+      --footer-bg: #1F1F1F;
+      --footer-text: #CCCCCC;
+      --card-bg: #FFFFFF;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --link-color: #4A90E2;
+      --link-hover: #FF6B6B;
+      --table-header: #4A90E2;
+      --table-header-text: #FFFFFF;
+      --table-row-hover: #F1F1F1;
+    }
+
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: #444;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Header */
+    header {
+      background-color: var(--header-bg);
+      box-shadow: 0 2px 4px var(--shadow-color);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--header-text);
+      margin: 0;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px var(--shadow-color);
+    }
+
+    .card h2 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      border-bottom: 2px solid var(--primary-color);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    ol, ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--table-header);
+      color: var(--table-header-text);
+      font-weight: 500;
+    }
+
+    tr:hover {
+      background-color: var(--table-row-hover);
+    }
+
+    /* Video Container */
+    .how-to-video-container {
+      background: linear-gradient(135deg, var(--accent-color), #FFD93D);
+      padding: 2rem; /* Increased padding */
+      border-radius: 16px; /* More pronounced border radius */
+      box-shadow: 0 6px 12px var(--shadow-color); /* Enhanced shadow */
+      text-align: center;
+      margin-top: 3rem; /* Increased top margin */
+      color: #fff;
+      max-width: 1200px; /* Increased max-width */
+      width: 90%; /* Responsive width */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .how-to-video-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .how-to-video-container p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .how-to-video-container iframe {
+      width: 100%; /* Full width */
+      height: 700px; /* Increased height */
+      border: none;
+      border-radius: 12px; /* Rounded edges */
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Enhanced shadow */
+      transition: transform 0.3s ease;
+    }
+
+    .how-to-video-container iframe:hover {
+      transform: scale(1.02);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--link-color);
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1400px) {
+      .how-to-video-container iframe {
+        height: 600px; /* Adjusted height for large screens */
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .how-to-video-container iframe {
+        height: 500px; /* Adjusted height for medium screens */
+      }
+    }
+
+    @media (max-width: 992px) {
+      .how-to-video-container iframe {
+        height: 450px; /* Adjusted height for smaller screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .how-to-video-container iframe {
+        height: 400px; /* Tablet devices */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .how-to-video-container {
+        padding: 1.5rem; /* Reduced padding for smaller screens */
+      }
+
+      .how-to-video-container iframe {
+        height: 300px; /* Adjusted height for large mobile devices */
+      }
+
+      .how-to-video-container h2 {
+        font-size: 1.6rem;
+      }
+
+      .how-to-video-container p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .how-to-video-container iframe {
+        height: 250px; /* Adjusted height for small mobile devices */
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .card h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header style="background-color:#FF6B6B ; height: 50px;">
+    <div class="container">
+      <h4 style="margin-top: 0px ;padding: 0px 370px ; color: #F5F7FA; font-size: 50px;">Add to Calendar</h4>
+      <!-- You can add a logo here if available -->
+      <!-- <img src="logo.png" alt="Logo" height="50"> -->
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>How to Get Started</h2>
+      <p>Thank you for installing <strong>Add to Calendar</strong>. Here's how you can start using it:</p>
+      <ol>
+        <li>Highlight any date or time text on a webpage.</li>
+        <li>Right-click and select <strong>Add to Calendar</strong> from the context menu.</li>
+        <li>A new Google Calendar event will open with the selected date and time pre-filled.</li>
+      </ol>
+    </div>
+
+    <div class="card how-to-video-container">
+      <h2>How to Use "Add to Calendar"</h2>
+      <p>Watch this quick video to learn how to add events to your Google Calendar effortlessly.</p>
+      <iframe
+        src="https://player.vimeo.com/video/1046051135?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+        title="How to Add Event to Calendar"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media">
+      </iframe>
+    </div>
+
+    <div class="card">
+      <h2>Supported Date/Time Formats</h2>
+      <p>The extension supports a wide range of date and time formats. Below is a table of examples:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard Dates</td>
+            <td>2025-01-15, 15/01/2025, 01/15/2025, Jan 15, 2025, 15 Jan 2025</td>
+            <td>Commonly used date formats globally.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>15th Jan 2025, January 15, 2025, 2025 Jan 15</td>
+            <td>Includes ordinal suffixes and alternative orderings.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Wednesday, January 15, 2025</td>
+            <td>Full day-of-week + date format.</td>
+          </tr>
+          <tr>
+            <td>Times</td>
+            <td>14:00, 2:00 PM, 2 PM, 7:30 AM, 12:15 PM</td>
+            <td>Common time formats (24-hour and 12-hour with AM/PM).</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>14:00:30, 2:00:30 PM</td>
+            <td>Includes seconds in time.</td>
+          </tr>
+          <tr>
+            <td>Date + Time</td>
+            <td>2025-01-15 14:00, 15 Jan 2025 2:30 PM, January 15, 2025 14:00</td>
+            <td>Combines date and time in various formats.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2025-01-15T14:00:00</td>
+            <td>ISO 8601 format.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>15th Jan 2025 at 6 PM, January 15, 2025, 2:30 PM</td>
+            <td>Includes the word "at" for natural phrasing.</td>
+          </tr>
+          <tr>
+            <td>Relative Dates</td>
+            <td>Tomorrow, Day after tomorrow, In 2 days, In 3 weeks, In 5 months</td>
+            <td>Relative to the current day (handles days, weeks, and months).</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>This Friday, Next Monday, Next week, Next weekend, Next year</td>
+            <td>Includes specific days and broad periods.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Two Fridays from now, Next Tuesday at 6 PM</td>
+            <td>More complex relative expressions.</td>
+          </tr>
+          <tr>
+            <td>International Formats</td>
+            <td>15.01.2025 (German)</td>
+            <td>Date formats used in non-English-speaking regions.</td>
+          </tr>
+          <tr>
+            <td>Shorthand</td>
+            <td>Jan 15 '25, 1/15/25, 15/1/25</td>
+            <td>Abbreviated year notations and shorthand formats.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>7pm, 5AM, noon, midnight</td>
+            <td>Shorthand for specific times.</td>
+          </tr>
+          <tr>
+            <td>Natural Phrasing</td>
+            <td>Today at 5 PM, Tomorrow morning, Next Thursday afternoon, This weekend at noon</td>
+            <td>Natural expressions combining day and time periods.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Tonight at 8 PM, Next Monday evening, Tomorrow night at 7</td>
+            <td>Time periods like morning, afternoon, evening, night.</td>
+          </tr>
+          <tr>
+            <td>Complex Variations</td>
+            <td>3 days from now at 6 PM, 1 week from today at noon, Next Friday at 7 PM</td>
+            <td>Complex relative expressions.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>15th Jan, 2:30 PM, Wed 15 Jan at 14:00, Friday at noon</td>
+            <td>Combines day, date, and time with varying phrasing.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Today at 14:30:00, Tomorrow at 7:30 AM, Two weeks from today at 6 PM</td>
+            <td>Combines relative dates with specific times.</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: center;">
+              Need support for other languages or date formats? 
+              <a href="https://gbengaayelabola.com/#Contact">Contact us</a>!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Zoom Meeting Integration</h2>
+      <p>Our latest feature lets you easily add Zoom meeting details (topic & link) to your Google Calendar event. 
+         Simply highlight any snippet with a Zoom link and/or "Topic" line, right-click, and select "Add to Calendar."</p>
+      <p>Here are three common examples you might see in an email or online:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Example Snippet</th>
+            <th>Outcome in Google Calendar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Format 1</strong></td>
+            <td>
+              <pre style="white-space:pre-wrap; font-family:inherit; background: #f9f9f9; padding: 0.5rem; border-radius: 4px;">
+Topic: Sales Lead With John Doe
+Join Zoom Meeting
+https://us06web.zoom.us/j/xxxxxx?pwd=595969595994.1
+
+Meeting ID: 000 00000 000
+Passcode: 00000
+              </pre>
+            </td>
+            <td>
+              <ul>
+                <li><strong>Title:</strong> Sales Lead With John Doe</li>
+                <li><strong>Location:</strong> Zoom link automatically added</li>
+                <li><strong>Time:</strong> If a valid date/time is highlighted, it will be parsed and added.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Format 2</strong></td>
+            <td>
+              <pre style="white-space:pre-wrap; font-family:inherit; background: #f9f9f9; padding: 0.5rem; border-radius: 4px;">
+Topic: AI Tutor
+Time: Jan 13, 2025 01:00 PM London
+
+Join Zoom Meeting
+https://us06web.zoom.us/j/xxxxxx?pwd=595969595994.1
+              </pre>
+            </td>
+            <td>
+              <ul>
+                <li><strong>Title:</strong> AI Tutor</li>
+                <li><strong>Location:</strong> Zoom link automatically added</li>
+                <li><strong>Time:</strong> "Jan 13, 2025 01:00 PM London" is recognized and parsed accordingly.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Format 3</strong></td>
+            <td>
+              <pre style="white-space:pre-wrap; font-family:inherit; background: #f9f9f9; padding: 0.5rem; border-radius: 4px;">
+Time: Jan 13, 2025 01:00 PM London
+
+https://us06web.zoom.us/j/xxxxxx?pwd=595969595994.1
+              </pre>
+            </td>
+            <td>
+              <ul>
+                <li><strong>Title:</strong> Defaults to "New Event" (since "Topic" is missing)</li>
+                <li><strong>Location:</strong> Zoom link automatically added</li>
+                <li><strong>Time:</strong> "Jan 13, 2025 01:00 PM London" is parsed into the event details.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>Tip:</strong> If the snippet includes a "Topic" line, that will be used as your 
+        Google Calendar event’s title. Otherwise, "New Event" is used as a fallback. 
+        If a valid Zoom link (<code>zoom.us/j/... </code>) is detected, 
+        it will appear in the "Location" field of your event.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Multi-Region Time Zone Support</h2>
+      <p>
+        We now recognize common time zone abbreviations or region names in your highlighted text.
+        For instance:
+      </p>
+      <ul>
+        <li><strong>EST, CST, PST, WAT, GMT</strong></li>
+        <li><strong>London, Lagos, Berlin, New York</strong></li>
+        <li><strong>UTC+1, UTC-5</strong> (and more)</li>
+      </ul>
+      <p>
+        If we detect a phrase like 
+        <code>Jan 13, 2025 01:00 PM WAT</code> 
+        or 
+        <code>Jan 13, 2025 01:00 PM London</code>, 
+        your calendar event will automatically convert and reflect the correct time
+        based on that zone. We default to your system time zone if none is found.
+      </p>
+      <p>
+        Examples:
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Snippet</th>
+            <th>Detected Time Zone</th>
+            <th>Event Time in GCal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Jan 13, 2025 2:00 PM PST</code></td>
+            <td>Pacific Standard Time (America/Los_Angeles)</td>
+            <td>
+              Parsed as Jan 13, 2025, 14:00 PST (UTC-8), 
+              then converted to the final event with <code>ctz=America/Los_Angeles</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code>Jan 13, 2025 01:00 PM WAT</code></td>
+            <td>West Africa Time (Africa/Lagos)</td>
+            <td>
+              Parsed as Jan 13, 2025, 13:00 WAT (UTC+1), 
+              then <code>ctz=Africa/Lagos</code> in Google Calendar
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        This means you'll see the correct local time on your Google Calendar, 
+        even if the event was scheduled in a different region. No extra setup required!
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      This extension is developed and supported by Techysense Ltd. 
+      Need help? Visit 
+      <a href="https://gbengaayelabola.com/#Contact">Help Center</a> 
+      or contact support.
+    </p>
+  </footer>
+</body>
+</html>
